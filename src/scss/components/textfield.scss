@@ -1,0 +1,51 @@
+@mixin textField {
+    width: 100%;
+    position: relative;
+
+    > .label {
+        position: absolute;
+        top: 12px;
+        left: 20px;
+        color: grey;
+        width: auto;
+        border-radius: 20px;
+        padding: 2px 6px;
+        transition: 0.3s;
+    }
+
+    > .label.focus {
+        background-color: rgb(34, 41, 55);
+        color: white;
+        top: -8px;
+        font-size: 10px;
+    }
+    
+    > .field {
+        padding: 14px 10px;
+        border-radius: 10px;
+        background-color: rgba(0, 0, 0, 0.05);
+        border: 2px solid transparent;
+        outline: none;
+        transition: 0.2s;
+        font-family: PlayfairRegular;
+        width: calc(100% - 20px);
+
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+    }
+
+    > .field.focus {
+        border: 2px solid rgb(34, 41, 55);
+    }
+
+    &.invalid {
+        > .field {
+            border: 2px solid red;
+        }
+
+        > .label.focus {
+            background-color: red;
+        }
+    }
+}

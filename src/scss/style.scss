@@ -1,0 +1,26 @@
+@import './login.scss';
+
+@font-face {
+    font-family: PlayfairRegular;
+    src: url('../fonts//PlayfairDisplay-Regular.ttf');
+}
+
+@font-face {
+    font-family: PlayfairBold;
+    src: url('../fonts//PlayfairDisplay-Bold.ttf');
+}
+
+@font-face {
+    font-family: PlayfairExtrabold;
+    src: url('../fonts//PlayfairDisplay-ExtraBold.ttf');
+}
+
+@font-face {
+    font-family: PlayfairBlack;
+    src: url('../fonts//PlayfairDisplay-Black.ttf');
+}
+
+html, body {
+    margin: 0;
+    font-family: PlayfairRegular;
+}

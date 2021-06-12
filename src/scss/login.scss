@@ -1,0 +1,130 @@
+@import './components/textfield.scss';
+@import './components/buttons.scss';
+
+.loginPage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../assets/background.jpg');
+    background-size: cover;
+    overflow: hidden;
+
+    .card {
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.4);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        padding: 70px;
+        min-width: 500px;
+
+        > .logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 60px;
+
+            > img {
+                width: 100px;
+                height: auto
+            }
+
+            > span {
+                font-weight: bold;
+                font-size: 32px;
+                margin-left: 40px;
+                font-family: PlayfairBlack;
+            }
+        }
+
+        > .form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+
+            > .input {
+                @include textField;
+                margin-bottom: 30px;
+            }
+
+            > .buttons {
+                margin-top: 40px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center; 
+                width: 100%;             
+
+                > .loginBtn {
+                    @include filledButton;
+                }
+
+                > .registerBtn {
+                    @include textButton;
+                }
+            }
+        }
+    }   
+
+    .card.login {
+        height: 400px;
+    }
+
+    .card.register {
+        height: 550px;
+    }
+}
+
+
+@media (max-width: 720px) {
+    div.loginPage {
+        justify-content: flex-start;
+        align-items: flex-start;
+        background-color: white;
+        background-image: none;
+
+        div.card {
+            width: 100vw;
+            height: 100%;
+            box-shadow: unset;
+            border-radius: unset;
+            justify-content: space-evenly;
+            padding: 0px;
+            min-width: unset;
+
+            > div.logo {
+                margin-bottom: 80px;
+            }
+
+            > div.form {
+                width: 80%;
+
+                > div.input {
+                    width: 80%;
+                }
+
+                > div.buttons {
+                    width: 80%;
+                }
+            }
+        }
+
+        div.card.login, div.card.register {
+            height: 100vh;
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    div.loginPage div.card > div.form {
+        width: 95%;
+    }
+}
