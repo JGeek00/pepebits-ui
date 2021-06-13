@@ -1,17 +1,17 @@
 import React from 'react';
-import { Route, Switch } from 'react-router';
+import { Route, Switch } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/Login';
 
 const App = () => {
     return (
         <Switch>
-            <Route to="/login">
-                <Login />
-            </Route>
-            <Route to="/" exact>
-                <Home />
-            </Route>
+            <Route path="/login"  render={
+                props => <Login {...props} />
+            }/>
+            <Route path="/" exact render={
+                props => <Home {...props} />
+            }/>
         </Switch>
     );
 }
