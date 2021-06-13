@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ReactCardFlip from 'react-card-flip';
+import TelegramLoginButton from 'react-telegram-login';
 
 import Logo from '../assets/logo-pepebits.png';
 import TextField from '../components/TextField';
@@ -45,6 +46,10 @@ const Login = () => {
         }
     }
 
+    const telegramLogin = (response) => {
+        console.log(response)
+    }
+
     return (
         <div className="loginPage">
             <ReactCardFlip isFlipped={flipped} flipDirection="horizontal">
@@ -57,8 +62,9 @@ const Login = () => {
                         <TextField type="email" label="Email" value={loginEmail} invalid={emailInvalid} onChange={(value) => setLoginEmail(value)} />
                         <TextField type="password" label="Password" value={loginPassword} onChange={(value) => setLoginPassword(value)} />
                         <div className="buttons">
-                            <button className="registerBtn" onClick={() => setFlipped(true)}>Register</button>
+                            <TelegramLoginButton dataOnauth={telegramLogin} botName="Pepebits_bot" />
                             <button className="loginBtn" disabled={!loginEmail || !loginPassword} onClick={login}>Login</button>
+                            <button className="registerBtn" onClick={() => setFlipped(true)}>Register</button>
                         </div>
                     </div>
                 </div>
@@ -73,8 +79,8 @@ const Login = () => {
                         <TextField type="text" label="Name" value={name} onChange={(value) => setName(value)} />
                         <TextField type="text" label="Surname" value={surname} onChange={(value) => setSurname(value)} />
                         <div className="buttons">
-                            <button className="registerBtn" onClick={() => flipCard()}>Login</button>
                             <button className="loginBtn" disabled={!registerEmail || !registerPassword || !name || !surname}>Register</button>
+                            <button className="registerBtn" onClick={() => flipCard()}>Login</button>
                         </div>
                     </div>
                 </div>

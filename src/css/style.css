@@ -93,9 +93,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-direction: column;
   width: 100%;
 }
 .loginPage .card > .form > .buttons > .loginBtn {
+  margin-top: 30px;
   background-color: #222937;
   color: white;
   border-radius: 10px;
@@ -105,6 +107,7 @@
   cursor: pointer;
   transition: 0.2s;
   font-family: PlayfairBold;
+  width: 200px;
 }
 .loginPage .card > .form > .buttons > .loginBtn:hover {
   box-shadow: 0px 0px 6px 3px rgba(0, 0, 0, 0.2);
@@ -118,6 +121,7 @@
   cursor: auto;
 }
 .loginPage .card > .form > .buttons > .registerBtn {
+  margin-top: 50px;
   color: #222937;
   background-color: transparent;
   padding: 10px;
@@ -127,6 +131,7 @@
   cursor: pointer;
   transition: 0.2s;
   font-family: PlayfairBold;
+  width: 200px;
 }
 .loginPage .card > .form > .buttons > .registerBtn:hover {
   background-color: rgba(0, 0, 0, 0.1);
@@ -135,10 +140,53 @@
   background-color: rgba(0, 0, 0, 0.2);
 }
 .loginPage .card.login {
-  height: 400px;
+  height: 550px;
 }
 .loginPage .card.register {
   height: 550px;
+}
+.loginPage .card.register > .form > .buttons > .loginBtn {
+  margin-top: 0px;
+  background-color: #222937;
+  color: white;
+  border-radius: 10px;
+  border: unset;
+  outline: unset;
+  padding: 12px;
+  cursor: pointer;
+  transition: 0.2s;
+  font-family: PlayfairBold;
+  width: 200px;
+}
+.loginPage .card.register > .form > .buttons > .loginBtn:hover {
+  box-shadow: 0px 0px 6px 3px rgba(0, 0, 0, 0.2);
+}
+.loginPage .card.register > .form > .buttons > .loginBtn:active {
+  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.2);
+}
+.loginPage .card.register > .form > .buttons > .loginBtn:disabled {
+  background-color: rgba(34, 41, 55, 0.5);
+  box-shadow: none;
+  cursor: auto;
+}
+.loginPage .card.register > .form > .buttons > .registerBtn {
+  margin-top: 30px;
+  color: #222937;
+  background-color: transparent;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: 0.2s;
+  font-family: PlayfairBold;
+  width: 200px;
+}
+.loginPage .card.register > .form > .buttons > .registerBtn:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.loginPage .card.register > .form > .buttons > .registerBtn:active {
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 @media (max-width: 720px) {
