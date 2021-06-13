@@ -21,6 +21,30 @@
   align-items: center;
   padding: 70px;
   min-width: 500px;
+  position: relative;
+}
+.loginPage .card > .proccessMessage {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(10px);
+  z-index: 50;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.loginPage .card > .proccessMessage > span {
+  margin-top: 50px;
+  font-size: 20px;
+  font-family: PlayfairBlack;
+  cursor: default;
+}
+.loginPage .card > .proccessMessage.show {
+  display: flex;
 }
 .loginPage .card > .logo {
   display: flex;
@@ -141,6 +165,10 @@
 }
 .loginPage .card.login {
   height: 550px;
+}
+.loginPage .card.login > .form > .buttons > .loginBtn {
+  margin-bottom: 30px;
+  margin-top: 0px;
 }
 .loginPage .card.register {
   height: 550px;

@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import ReactCardFlip from 'react-card-flip';
 import TelegramLoginButton from 'react-telegram-login';
+import Loader from "react-loader-spinner";
 
 import Logo from '../assets/logo-pepebits.png';
 import TextField from '../components/TextField';
+import Toast from '../components/Toast';
 
 const Login = () => {
     const [loginEmail, setLoginEmail] = useState("");
@@ -17,6 +19,9 @@ const Login = () => {
     const [flipped, setFlipped] = useState(false);
     
     const [emailInvalid, setEmailInvalid] = useState(false);
+
+    const [loggingIn, setLoggingIn] = useState(false);
+    const [showToast, setShowToast] = useState(false);
 
     let interval;
 
@@ -34,7 +39,8 @@ const Login = () => {
     const login = () => {
         const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
         if (emailRegex.test(loginEmail) && loginPassword) {
-            
+            setLoggingIn(true);
+            setShowToast(true)
         }
         else {
             clearInterval(interval);
@@ -52,8 +58,13 @@ const Login = () => {
 
     return (
         <div className="loginPage">
+            <Toast type="error" text="Login failed. Try it again." showToast={showToast} hideToast={setShowToast} duration={3000} />
             <ReactCardFlip isFlipped={flipped} flipDirection="horizontal">
                 <div className="card login">
+                    <div className={loggingIn ? "proccessMessage show" : "proccessMessage"}>
+                        <Loader type="Oval" color="rgb(34, 41, 55)" height={75} width={75} />
+                        <span>Logging in...</span>
+                    </div>
                     <div className="logo">
                         <img src={Logo} alt="" />
                         <span>Login</span>
@@ -62,8 +73,8 @@ const Login = () => {
                         <TextField type="email" label="Email" value={loginEmail} invalid={emailInvalid} onChange={(value) => setLoginEmail(value)} />
                         <TextField type="password" label="Password" value={loginPassword} onChange={(value) => setLoginPassword(value)} />
                         <div className="buttons">
-                            <TelegramLoginButton dataOnauth={telegramLogin} botName="Pepebits_bot" />
                             <button className="loginBtn" disabled={!loginEmail || !loginPassword} onClick={login}>Login</button>
+                            <TelegramLoginButton dataOnauth={telegramLogin} botName="Pepebits_bot" />
                             <button className="registerBtn" onClick={() => setFlipped(true)}>Register</button>
                         </div>
                     </div>
