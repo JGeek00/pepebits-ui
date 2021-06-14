@@ -1,0 +1,36 @@
+name: CD
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the main (old master) branch
+on:
+  push:
+    branches: [ master ]
+#  pull_request:
+#    branches: [ main ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+      runs-on: ubuntu-latest
+      
+    # Steps representan la secuencia en la que se ejecuta el job (tarea/trabajo)
+      
+      steps:
+ 
+      - name: Remote SSH Commands
+        uses: fifsky/ssh-action@v0.0.4
+        with:
+         command: |
+                 cd /var/www/pepebits/
+                 pm2 stop pepebits-ui
+                 rm -rf pepebits-ui
+                 git clone https://${{secrets.GIT_TOKEN}}@github.com/Pepebits/pepebits-ui.git
+                 cd pepebits-ui
+                 npm install
+                 pm2 start --name pepebits-ui npm -- start -f
+         host: ${{secrets.SERVER_IP}}
+         user: ${{secrets.SSH_USERNAME}}
+         port: ${{secrets.SERVER_PORT}}
+         key: ${{secrets.SSH_DEPLOY_PRIVATE_KEY}}
