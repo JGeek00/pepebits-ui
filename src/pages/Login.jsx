@@ -74,7 +74,7 @@ const Login = () => {
                         <TextField type="password" label="Password" value={loginPassword} onChange={(value) => setLoginPassword(value)} />
                         <div className="buttons">
                             <button className="loginBtn" disabled={!loginEmail || !loginPassword} onClick={login}>Login</button>
-                            <TelegramLoginButton dataOnauth={telegramLogin} botName="Pepebits_bot" />
+                            <TelegramLoginButton dataOnauth={telegramLogin} botName="Pepebits_bot" usePic={false} />
                             <button className="registerBtn" onClick={() => setFlipped(true)}>Register</button>
                         </div>
                     </div>
